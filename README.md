@@ -20,9 +20,11 @@ To install the required dependencies for this project, follow these steps:
 1. Navigate to Docker Desktop and you should see that a container has been created. Run this container.
 
 ### Setting up your new database
+
 1. In your terminal, in the ```Server/``` folder, run ```npm run db:migrate```
 
 ### Accessing the application
+
 1. In your terminal, in the ```Server/``` folder, run ```npm start```
 1. In your browser, go to http://127.0.0.1:3001/Frontend/home.html 
 

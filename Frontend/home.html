@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bridget Jones Diary</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <h1>📒 Bridget Jones Diary</h1>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="list.html">Diary Entries</a>
+    <a href="create.html">New Entry</a>
+  </nav>
+
+  <form class="search-bar" onsubmit="handleSearch(event)">
+    <input id="search-input" type="text" placeholder="Search diary..." />
+    <button>Search</button>
+  </form>
+</header>
+
+<main>
+  <h2>Welcome back ✨</h2>
+  <p>
+    This is your private space to record dreams, fears, regrets and
+    everything in between.
+  </p>
+
+  <div class="card">
+    <h3>What can you do?</h3>
+    <ul>
+      <li>Create diary entries</li>
+      <li>Search past thoughts</li>
+      <li>Edit or delete entries</li>
+    </ul>
+  </div>
+</main>
+
+<script src="search.js"></script>
+</body>
+</html>

@@ -1,9 +1,6 @@
 import db from "../database/connect.js"
 import { EntryTable } from "../database/schemas/entry.js"
-import { sql } from 'drizzle-orm' 
-
-
-
+import { eq, desc } from "drizzle-orm"
 class Entry {
   constructor({ id, title, body, createdAt, updatedAt }) {
     this.id = id
@@ -17,9 +14,10 @@ class Entry {
     console.log("running getAll() from model")
 
     // SELECT * FROM entry
-    await db.execute(
-      sql`select * from ${EntryTable}`,
-    )
+    const rows = await db
+      .select()
+      .from(EntryTable)
+      .orderBy(desc(EntryTable.createdAt))
 
     if (!rows || rows.length === 0) {
       throw new Error("No entries available.")
@@ -30,22 +28,27 @@ class Entry {
   }
 
   static async getById(id) {
-    const rows = await db
-      .select()
-      .from(EntryTable)
-      .where(EntryTable.id.equals(id))
+    console.log("running getById() from model")
+    const rows = await db.select().from(EntryTable).where(eq(EntryTable.id, id))
     if (!rows || rows.length === 0) {
       throw new Error("Entry not found")
     }
+    console.log("returning getById() from model")
     return new Entry(rows[0])
   }
 
   static async create({ title, body }) {
-    const [inserted] = await db
+    console.log("returning create() from model")
+
+    const response = await db
       .insert(EntryTable)
-      .values({ title, body })
+      .values({
+        title,
+        body,
+      })
       .returning()
-    return new Entry(inserted)
+      console.log("returning create() from model")
+    return new Entry(response[0])
   }
 }
 

@@ -1,8 +1,11 @@
 import { Router } from "express"
 import entryController from "../controllers/entries.js"
 
-const entryRouter = Router();
+const entryRouter = Router()
 
-entryRouter.get("/", entryController.index);
+entryRouter.get("/", entryController.index) // list all entries
+entryRouter.post("/", entryController.create) // create new entry
 
-export default entryRouter;
+entryRouter.get("/:id", entryController.show) // list specific entry
+
+export default entryRouter

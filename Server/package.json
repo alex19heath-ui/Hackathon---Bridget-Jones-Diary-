@@ -8,7 +8,8 @@
     "db:migrate": "drizzle-kit migrate",
     "db:generate": "drizzle-kit generate",
     "db:studio": "drizzle-kit studio",
-    "dev": "nodemon -L ./index.js"
+    "dev": "nodemon -L ./index.js",
+    "start": "node ./index.js"
   },
   "keywords": [],
   "author": "",

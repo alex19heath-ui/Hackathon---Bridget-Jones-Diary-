@@ -2,9 +2,10 @@ import { defineConfig } from "drizzle-kit"
 
 export default defineConfig({
   dialect: "postgresql",
+  schema: "./database/schemas",
 
   // where to output the generated migration files
-  out: "./database",
+  out: "./database/migrations",
 
   // what this does: whenever we try to run migrations using drizzle, it'll tell us exactly what's happening and we have to confirm that we want to do things like delete columns etc.
   strict: true,

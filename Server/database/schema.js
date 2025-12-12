@@ -1,1 +1,1 @@
-export * from "./schemas/page"
+export * from "./schemas/entry"

@@ -1,7 +1,7 @@
 const { pgTable, text, timestamp, uuid } = require('drizzle-orm/pg-core')
 
 // calls PG table which allows us to create a table
-const PageTable = pgTable('pages', {
+const EntryTable = pgTable('entry', {
   // id uuid GENERATED ALWAYS AS IDENTITY, PRIMARY KEY (id)
   id: uuid().primaryKey().defaultRandom(),
   // title TEXT NOT NULL,
@@ -24,10 +24,10 @@ const PageTable = pgTable('pages', {
 // pass in the table we want to do our relations for
 // this is going to take in a function that has a one and a many property so we can determine things like one-to-one relationships and many-to-many relationships and so on
 
-// export const PageRelationships = (PageTable, {one, many} => ({
+// export const EntryRelationships = (EntryTable, {one, many} => ({
 //     // specify all our different relationships here
 // }))
 
 module.exports = {
-  PageTable,
+  EntryTable,
 }

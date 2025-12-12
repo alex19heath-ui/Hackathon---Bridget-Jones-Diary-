@@ -7,18 +7,22 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:migrate": "drizzle-kit migrate",
     "db:generate": "drizzle-kit generate",
-    "db:studio": "drizzle-kit studio"
-
+    "db:studio": "drizzle-kit studio",
+    "dev": "nodemon -L ./index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "drizzle-kit": "^0.31.8"
+    "drizzle-kit": "^0.31.8",
+    "nodemon": "^3.1.11"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
+    "express": "^5.2.1",
     "pg": "^8.16.3"
   }
 }

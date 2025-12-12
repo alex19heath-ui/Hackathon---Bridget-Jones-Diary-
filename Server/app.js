@@ -1,6 +1,6 @@
 import express from "express"
 import cors from "cors"
-import entryRouter from "./routes/entry"
+import entryRouter from "./routes/entries.js"
 
 const app = express()
 

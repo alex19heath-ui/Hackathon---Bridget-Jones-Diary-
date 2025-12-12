@@ -16,7 +16,7 @@
     <a href="create.html">New Entry</a>
   </nav>
 
-  <form class="search-bar" onsubmit="handleSearch(event)">
+  <form class="search-bar">
     <input id="search-input" type="text" placeholder="Search diary..." />
     <button>Search</button>
   </form>
@@ -44,10 +44,10 @@ document.getElementById('create-form').addEventListener('submit', async (e) => {
 
   await fetch('http://localhost:3000/entries', {
     method: 'POST',
-    headers: { 'Body-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       title: title.value,
-      content: content.value
+      body: body.value
     })
   })
 

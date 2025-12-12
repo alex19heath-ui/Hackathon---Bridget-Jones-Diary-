@@ -16,7 +16,7 @@
     <a href="create.html">New Entry</a>
   </nav>
 
-  <form class="search-bar" onsubmit="handleSearch(event)">
+  <form class="search-bar">
     <input id="search-input" type="text" placeholder="Search diary..." />
     <button>Search</button>
   </form>
@@ -24,7 +24,6 @@
 
 <main>
   <h2>Your pages</h2>
-
   <div id="entries"></div>
 </main>
 
@@ -57,7 +56,7 @@ async function loadEntries() {
     div.innerHTML = `
       <strong>${entry.title}</strong>
       <small>${new Date(entry.created_at).toLocaleString()}</small>
-      <p>${entry.content}</p>
+      <p>${entry.body}</p>
     `
     container.appendChild(div)
   })

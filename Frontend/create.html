@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>New Entry</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <h1>✍️ New Diary Entry</h1>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="list.html">Diary Entries</a>
+    <a href="create.html">New Entry</a>
+  </nav>
+
+  <form class="search-bar" onsubmit="handleSearch(event)">
+    <input id="search-input" type="text" placeholder="Search diary..." />
+    <button>Search</button>
+  </form>
+</header>
+
+<main>
+  <h2>Create a new page</h2>
+
+  <form id="create-form" class="card">
+    <label>Title</label><br />
+    <input type="text" id="title" required /><br /><br />
+
+    <label>Diary Entry</label><br />
+    <textarea id="body" rows="6" required></textarea><br /><br />
+
+    <button>Create Entry</button>
+  </form>
+</main>
+
+<script src="search.js"></script>
+
+<script>
+document.getElementById('create-form').addEventListener('submit', async (e) => {
+  e.preventDefault()
+
+  await fetch('http://localhost:3000/entries', {
+    method: 'POST',
+    headers: { 'Body-Type': 'application/json' },
+    body: JSON.stringify({
+      title: title.value,
+      content: content.value
+    })
+  })
+
+  window.location.href = 'list.html'
+})
+</script>
+
+</body>
+</html>

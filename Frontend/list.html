@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Diary Entries</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <h1>📖 Diary Entries</h1>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="list.html">Diary Entries</a>
+    <a href="create.html">New Entry</a>
+  </nav>
+
+  <form class="search-bar" onsubmit="handleSearch(event)">
+    <input id="search-input" type="text" placeholder="Search diary..." />
+    <button>Search</button>
+  </form>
+</header>
+
+<main>
+  <h2>Your pages</h2>
+
+  <div id="entries"></div>
+</main>
+
+<script src="search.js"></script>
+
+<script>
+const params = new URLSearchParams(window.location.search)
+const keyword = params.get('q')
+
+async function loadEntries() {
+  let url = 'http://localhost:3000/entries'
+  if (keyword) {
+    url += `?q=${encodeURIComponent(keyword)}`
+  }
+
+  const res = await fetch(url)
+  const entries = await res.json()
+
+  const container = document.getElementById('entries')
+  container.innerHTML = ''
+
+  if (entries.length === 0) {
+    container.innerHTML = '<p>No diary entries found.</p>'
+    return
+  }
+
+  entries.forEach(entry => {
+    const div = document.createElement('div')
+    div.className = 'card'
+    div.innerHTML = `
+      <strong>${entry.title}</strong>
+      <small>${new Date(entry.created_at).toLocaleString()}</small>
+      <p>${entry.content}</p>
+    `
+    container.appendChild(div)
+  })
+}
+
+loadEntries()
+</script>
+
+</body>
+</html>

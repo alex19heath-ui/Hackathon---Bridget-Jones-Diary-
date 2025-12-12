@@ -1,7 +1,7 @@
-const { pgTable, text, timestamp, uuid } = require('drizzle-orm/pg-core')
+import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 
 // calls PG table which allows us to create a table
-const EntryTable = pgTable('entry', {
+export const EntryTable = pgTable('entry', {
   // id uuid GENERATED ALWAYS AS IDENTITY, PRIMARY KEY (id)
   id: uuid().primaryKey().defaultRandom(),
   // title TEXT NOT NULL,
@@ -27,7 +27,3 @@ const EntryTable = pgTable('entry', {
 // export const EntryRelationships = (EntryTable, {one, many} => ({
 //     // specify all our different relationships here
 // }))
-
-module.exports = {
-  EntryTable,
-}

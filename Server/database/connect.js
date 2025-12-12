@@ -10,3 +10,5 @@ export const db = drizzle({
         host: process.env.DB_HOST,
     }
 })
+
+console.log("DB connection established.");
